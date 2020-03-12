@@ -1,6 +1,5 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -14,9 +13,9 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-const routes = require('./controllers/burgerController');
+app.get('/', (req, res) => res.send('index'));
 
-app.use(routes);
+app.use('/burgers', require('./controllers/burgerController'));
 
 
 app.listen(PORT, function() {

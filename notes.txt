@@ -1,0 +1,11 @@
+Look up vanilla fetch() to replace $.ajax calls
+
+fetch()
+.then(res => res.json())
+.then(function(data))
+.catch(function());
+
+Look into partials for project 2
+
+-- lives inside the views folder, Handlebars looks for it to run modularized HTML/handlebars code.
+-- {{> //path-to-partial //set-attribute}}
