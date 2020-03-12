@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const bodyParser = require('body-parser');
+const path = require('path');
 const PORT = process.env.PORT || 8080;
 			
 //setting handlebars as template engine
@@ -13,7 +14,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded( { extended: false }));
 
 //setting static folder
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 //middleware launching - handles data parsing with Express
 app.use(express.urlencoded({ extended: true}));

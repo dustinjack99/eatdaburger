@@ -1,29 +1,31 @@
-<h2>Burgers I Want to Eat!</h2>
-
-<ul>
-    {{#each burgers  }}
-        <li> Name: {{this.burger_name}} </li>
+<div id="burgerlist">
+    <h2 class="headings">Burgers to Eat:</h2>
+    <ul>
+        {{#each burgers  }}
+        <h3>{{this.burger_name}} Burger</h3>
         <form action="/eat" method="POST">
-       <button type="submit">Eat a burger</button>
-       </form>
-    {{/each}}
+            <button type="submit">Eat This Burger!</button>
+        </form>
+        {{/each}}
+    </ul>
+</div>
 
-</ul>
-
-
-<h2>Burgers I've Eaten!</h2>
-
-<ul>
-    {{#each burgers  }}
+<div id="eatenburgers">
+    <h2 class="headings">Burgers I've Eaten:</h2>
+    <ul>
+        {{#each burgers  }}
         {{#if this.devoured}}
-        <li> Name: {{this.burger_name}} </li>
+        <h4> Name: {{this.burger_name}} </h4>
         {{/if}}
-    {{/each}}
+        {{/each}}
 
-</ul>
+    </ul>
+</div>
 
-<h2>Add a Burger!</h2>
-<form action="/" method="POST">
-    <input name="burgerName" type="text">
-    <button type="submit">Submit</button>
-</form>
+<div id="addburger">
+    <h2 class="headings">Add a Burger!</h2>
+    <form id="appbottom" action="/" method="POST">
+        <input name="burgerName" type="text">
+        <button type="submit">Submit</button>
+    </form>
+</div>
