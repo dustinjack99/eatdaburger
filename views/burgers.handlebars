@@ -1,0 +1,29 @@
+<h2>Burgers I Want to Eat!</h2>
+
+<ul>
+    {{#each burgers  }}
+        <li> Name: {{this.burger_name}} </li>
+        <form action="/eat" method="POST">
+       <button type="submit">Eat a burger</button>
+       </form>
+    {{/each}}
+
+</ul>
+
+
+<h2>Burgers I've Eaten!</h2>
+
+<ul>
+    {{#each burgers  }}
+        {{#if this.devoured}}
+        <li> Name: {{this.burger_name}} </li>
+        {{/if}}
+    {{/each}}
+
+</ul>
+
+<h2>Add a Burger!</h2>
+<form action="/" method="POST">
+    <input name="burgerName" type="text">
+    <button type="submit">Submit</button>
+</form>

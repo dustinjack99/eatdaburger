@@ -1,37 +1,45 @@
 const Burger = require("../models/burger");
 const express = require("express");
-const connection = require("../config/connection");
 const router = express.Router();
-
 
 // Gets all burgers from database.
 router.get("/", (req, res) => {
   Burger.findAll()
-    .then(results => {
-      console.log(results);
-      res.send(results);
-      res.sendStatus(200);
+    .then(burgers => {
+      res.render('burgers', {
+          burgers
+      });
     })
     .catch(err => console.log(err));
 });
 
-// Add a burger
-router.get('/add', (req, res) => {
-    const data = {
-        burger_name: "Blackbean",
-        devoured: 0
-    }
 
-    let { burger_name, devoured } = data;
+// Add a burger
+router.post('/', (req, res) => {
+    let { burgerName } = req.body;
 
     Burger.create({
-        burger_name,
-        devoured
-    })
-    .then(burger => res.redirect('/burgers'))
-    .catch(err => console.log(err));
-})
 
+        burger_name: burgerName,
+        devoured: 0
+    })
+    .then(burger => res.redirect('/'))
+    .catch(err => console.log(err));
+    
+});
+
+
+
+router.get('/eat', (req, res) => {
+    res.send(req.body)
+    conssole.log(req.body)
+    Burger.update({
+        devoured: 1
+    })
+    .then(burger => res.redirect('/'))
+    .catch(err => console.log(err));
+
+});
 
 module.exports = router;
 //   app.post("/api/new", function(req, res) {
