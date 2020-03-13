@@ -1,13 +1,7 @@
-const Sequelize = require("sequelize");
-
-const connection = require("../config/connection");
-
-
-const Burger = connection.define("burger", {
-    burger_name: Sequelize.STRING,
-    devoured: Sequelize.TINYINT
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define("Burger", {
+    burger_name: DataTypes.STRING,
+    devoured: DataTypes.BOOLEAN
   });
-
-Burger.sync();
-
-module.exports = Burger; 
+  return Burger;
+};

@@ -2,9 +2,12 @@
     <h2 class="headings">Burgers to Eat:</h2>
     <ul>
         {{#each burgers  }}
-        <h3>{{this.burger_name}} Burger</h3>
-        <form action="/eat" method="POST">
+        <h3>{{this.dataValues.burger_name}} Burger</h3>
+        <form action="/">
             <button type="submit">Eat This Burger!</button>
+        </form>
+        <form action="/">
+            <button class="delete" type="submit">Delete This Burger!</button>
         </form>
         {{/each}}
     </ul>
@@ -12,10 +15,9 @@
 
 <div id="eatenburgers">
     <h2 class="headings">Burgers I've Eaten:</h2>
-    <ul>
         {{#each burgers  }}
-        {{#if this.devoured}}
-        <h4> Name: {{this.burger_name}} </h4>
+        {{#if this.dataValues.devoured}}
+        <h4> Name: {{this.dataValues.burger_name}} </h4>
         {{/if}}
         {{/each}}
 
