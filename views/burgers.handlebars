@@ -3,11 +3,11 @@
     <ul>
         {{#each burgers  }}
         <h3>{{this.dataValues.burger_name}} Burger</h3>
-        <form action="/">
+        <form action="/api/burgers/eat" method="POST">
             <button type="submit">Eat This Burger!</button>
         </form>
-        <form action="/">
-            <button class="delete" type="submit">Delete This Burger!</button>
+        <form action="/api/burgers/delete" method="POST">
+            <button class="delete">Delete This Burger!</button>
         </form>
         {{/each}}
     </ul>
@@ -15,18 +15,18 @@
 
 <div id="eatenburgers">
     <h2 class="headings">Burgers I've Eaten:</h2>
-        {{#each burgers  }}
-        {{#if this.dataValues.devoured}}
-        <h4> Name: {{this.dataValues.burger_name}} </h4>
-        {{/if}}
-        {{/each}}
+    {{#each burgers  }}
+    {{#if this.dataValues.devoured}}
+    <h4> Name: {{this.dataValues.burger_name}} </h4>
+    {{/if}}
+    {{/each}}
 
     </ul>
 </div>
 
 <div id="addburger">
     <h2 class="headings">Add a Burger!</h2>
-    <form id="appbottom" action="/" method="POST">
+    <form id="appbottom" action="/api/burgers" method="POST">
         <input name="burgerName" type="text">
         <button type="submit">Submit</button>
     </form>
