@@ -4,10 +4,9 @@ module.exports = function (app) {
   //html route
   app.get("/", function (req, res) {
     db.Burger.findAll({}).then(function (burgers) {
-      res.render("burgers", {
+      return res.render("burgers", {
         burgers,
       });
-      return res.redirect("/");
     });
   });
 
