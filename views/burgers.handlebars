@@ -2,13 +2,16 @@
     <h2 class="headings">Burgers to Eat:</h2>
     <ul>
         {{#each burgers  }}
+        {{#if this.dataValues.devoured}}
+        {{else}}
         <h3>{{this.dataValues.burger_name}} Burger</h3>
-        <form action="/api/burgers/eat" method="POST">
+        <form action='/api/burgers/eat/{{this.dataValues.id}}' method="POST">
             <button type="submit">Eat This Burger!</button>
         </form>
-        <form action="/api/burgers/delete" method="POST">
+        <form action='/api/burgers/delete/{{this.dataValues.id}}' method="POST">
             <button class="delete">Delete This Burger!</button>
         </form>
+        {{/if}}
         {{/each}}
     </ul>
 </div>

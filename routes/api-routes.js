@@ -1,49 +1,50 @@
-var db = require('../models');
+var db = require("../models");
 
-module.exports = function(app) {
-  app.get('/', function(req, res) {
-    db.Burger.findAll({}).then(function(burgers) {
-      res.render('burgers', {
-        burgers
+module.exports = (app) => {
+  //html route
+  app.get("/", function (req, res) {
+    db.Burger.findAll({}).then(function (burgers) {
+      return res.render("burgers", {
+        burgers,
       });
     });
   });
 
-  app.post('/api/burgers', function(req, res) {
+  app.post("/api/burgers", function (req, res) {
     db.Burger.create({
       burger_name: req.body.burgerName,
-      devoured: 0
-    }).then(function(dbBurger) {
-      // res.json(dbBurger);
-      res.redirect('/');
+      devoured: 0,
+    }).then((dbBurger) => {
+      return res.redirect("/");
     });
   });
 
-  app.delete('/api/burgers/delete/:id', function(req, res) {
+  app.post("/api/burgers/delete/:id", function (req, res) {
+    console.log(req.params.id);
     db.Burger.destroy({
       where: {
-        id: req.params.id
-      }
-    }).then(function(dbBurger) {
+        id: req.params.id,
+      },
+    }).then(function (dbBurger) {
       // res.json(dbBurger);
-      res.redirect('/');
+      return res.redirect("/");
     });
   });
 
-  app.put('/api/burgers/eat', function(req, res) {
+  app.post("/api/burgers/eat/:id", function (req, res) {
+    console.log(req.params.id);
     db.Burger.update(
       {
-        burger_name: req.body.burger_name,
-        devoured: 1
+        devoured: 1,
       },
       {
         where: {
-          id: req.body.id
-        }
+          id: req.params.id,
+        },
       }
-    ).then(function(dbBurger) {
+    ).then(function (dbBurger) {
       // res.json(dbBurger);
-      res.redirect('/');
+      return res.redirect("/");
     });
   });
 };
