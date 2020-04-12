@@ -3,11 +3,15 @@ var db = require("../models");
 module.exports = function (app) {
   //html route
   app.get("/", function (req, res) {
-    db.Burger.findAll({}).then(function (burgers) {
-      return res.render("burgers", {
-        burgers,
+    db.Burger.findAll({})
+      .then(function (burgers) {
+        res.render("burgers", {
+          burgers,
+        });
+      })
+      .then((bla) => {
+        return res.redirect("/");
       });
-    });
   });
 
   app.post("/api/burgers", function (req, res) {
