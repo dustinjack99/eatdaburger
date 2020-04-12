@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = (app) => {
   //html route
   app.get("/", function (req, res) {
     db.Burger.findAll({}).then(function (burgers) {
