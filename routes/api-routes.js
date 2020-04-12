@@ -7,7 +7,7 @@ module.exports = function (app) {
       res.render("burgers", {
         burgers,
       });
-      res.redirect("/");
+      return res.redirect("/");
     });
   });
 
